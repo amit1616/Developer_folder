@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <h1 style="color: whitesmoke;  position: relative; top: 8px; ">Termination Waiver Approval</h1>
+
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" style="color: whitesmoke;">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a style="color: whitesmoke;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            My Request
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/RequestInitation">Request Initation</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" routerLink="/SettlementLetter">Settlement letter</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a style="color: whitesmoke;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            My Worklist
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/ApplicationReview">Application Review</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" routerLink="/RequestHistory">Request History</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a style="color: whitesmoke;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="/Upload">Upload</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" routerLink="/Master">Master</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" routerLink="/Admin">Transfer</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" style="color: whitesmoke;" tabindex="-1"
+            aria-disabled="true">Reports</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <mat-icon aria-hidden="false" aria-label="Example assignment icon" fontIcon="assignment"></mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Example account_circle icon" fontIcon="account_circle"></mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Example power_settings_new icon" fontIcon="power_settings_new"></mat-icon>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid py-3">
+
+
+  <router-outlet></router-outlet>
+
+</div>
+<footer>
+
+</footer>
+
+

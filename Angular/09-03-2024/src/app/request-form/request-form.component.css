@@ -1,0 +1,192 @@
+.card-header{
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+ background-color: #6d34aa;
+ align-items: stretch;
+ box-shadow: 0 1px 1px rgb(10 10 10 / 10%);
+ color: whitesmoke;
+ height: 60px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+.hover-class:hover {
+  background-color: #fd7e14;
+}
+.selected-row {
+  background-color: yellow; 
+}
+
+ .highlighted {
+  background-color: #fd7e14; 
+} 
+
+.example-button-row{
+  display: flex;
+  justify-content: center;
+}
+
+.mat-button {
+  background-color: #ffffff;
+  color: #6d34aa;
+  border: 1px solid #6d34aa;
+  border-radius: 5px; /* Add border radius */
+  padding: 8px 16px; /* Add padding for better button appearance */
+  margin-right: 10px;
+  transition: background-color 0.3s, color 0.3s; /* Add transition for smooth color change */
+}
+
+.mat-button:hover {
+  background-color: #fd7e14;
+  color: white;
+  border-color: #fd7e14;
+}
+
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-text {
+  margin-right: 10px; /* Adjust the margin between the label and input field */
+}
+
+
+.input-with-button {
+  display: flex;
+  align-items: center;
+}
+
+.input-with-button input {
+  margin-right: 10px; /* Adjust the margin between the input field and button */
+}
+
+.selected {
+  background-color: #ffcc00; /* Change this to your desired background color */
+}
+
+
+.mat-button {
+  background-color: #fff; /* Default background color */
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.mat-button.selected {
+  background-color: #fff; /* Background color when button is selected */
+}
+
+.mat-button:hover(.selected) {
+  background-color: #fd7e14; /* Background color on hover if not selected */
+}
+
+.contact-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contact-table th,
+.contact-table td {
+  padding: 8px;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+  margin-left:10%;
+}
+
+.input-group1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-remove,
+.btn-add,
+.btn-submit,
+.btn-reset {
+  margin-right: 5px; /* Adjust button spacing */
+}
+
+
+.error-message {
+  color: red;
+}
+
+.uploadbutton{
+  margin-left:25rem;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.addbutton{
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+.typeuploadbutton{
+  margin-left:32rem;
+  margin-top:10px;
+  margin-bottom: 5px;
+}
+
+.sanuploadbutton{
+  margin-left:52rem;
+  margin-top:10px;
+  margin-bottom: 5px;
+}
+
+.sanaddbtn{
+  margin-top:10px;
+  margin-left:5px;
+  margin-top: auto;
+}
+
+.cnumber{
+  width:70%;
+}
+
+.delete-button {
+  color: red;
+}
+
+.amount-field {
+  text-align: right;
+}
+
+.checkbox-label {
+  margin-left: 10px; /* Adjust the value as needed */
+}
+
+.disclaimer-heading {
+  margin-bottom: 10px; /* Adjust this value as needed */
+}
+
+.disclaimer-top{
+  margin-top: 15px;
+}
+

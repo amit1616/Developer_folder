@@ -1,0 +1,176 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-header d-flex p-0">
+      <h3 class="card-title p-3">Feedback</h3>
+    </div>
+    <div class="card-body">
+      <div class="tab-content">
+        <!-- contract display card start -->
+        <form id="myForm" [formGroup]="feedbackForm">
+          <div formArrayName="FeedbackDetails">
+
+            <!-- <div class="col-md-3" *ngFor="let msg of message.splice(number, number+4 > message.length ? message.length : number+4  );let i = index" style="display: inline-block; padding: 5px;"> -->
+            <div class="col-md-3" *ngFor="let msg of feedbackData;let i = index" formGroupName="{{i}}"
+              style="display: inline-block; padding: 5px;">
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Contract No:{{msg.con_no}}</h3>
+                </div>
+
+
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="InputCustName"><b>Customer Name</b></label>
+                    <input type="text" formControlName="CustName" class="form-control" id="InputCustName"
+                      placeholder="Customer Name" [ngModel]="msg.original_customer">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputVehicleRegNo"><b>Vehicle Reg. No</b></label>
+                    <input type="text" formControlName="VehicleRegNo" class="form-control" id="InputVehicleRegNo"
+                      placeholder="Vehicle Reg. No" [ngModel]="msg.reg_no">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputVehicleModel"><b>Vehicle Model</b></label>
+                    <input type="text" formControlName="VehicleModel" class="form-control" id="InputVehicleModel"
+                      placeholder="Vehicle Model" [ngModel]="msg.vehicle_model">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputProposedDate"><b>Proposed Settlement Date</b></label>
+                    <input type="date" formControlName="ProposedDate" class="form-control" id="InputProposedDate"
+                      placeholder="Proposed Settlement Date">
+                  </div>
+                  <div class="form-group">
+                    <label><b>Who is setteling the contract</b></label>
+                    <select class="form-control" formControlName="SettleingContract">
+                      <option>Select</option>
+                      <option>Orignal Customer</option>
+                      <option>Others</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="InputnameVisitedCust"><b>Name of the person who visited office on behalf of the
+                        customer</b></label>
+                    <input type="text" formControlName="nameVisitedCust" class="form-control" id="InputnameVisitedCust"
+                      placeholder="Name of the person who visited office on behalf of the customer">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputTeleMobNumb"><b>Telephone/Mobile Number</b></label>
+                    <input type="number" formControlName="TeleMobNumb" class="form-control" id="InputTeleMobNumb"
+                      placeholder="Telephone/Mobile Number">
+                  </div>
+                  <div class="form-group">
+                    <label><b>Vehicle Condition</b></label>
+                    <select class="form-control" formControlName="VehicleCondition">
+                      <option>Select</option>
+                      <option>Good</option>
+                      <option>Average</option>
+                      <option>Bad</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label><b>Has anyone met customer personally?</b></label>
+                    <select class="form-control" formControlName="MetCustomer">
+                      <option>Select</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label><b>Has anyone met guarantor personally?</b></label>
+                    <select class="form-control" formControlName="MetGuarantor">
+                      <option>Select</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label><b>Is the vehicle physically available?</b></label>
+                    <select class="form-control" formControlName="VehicleAvailable">
+                      <option>Select</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label><b>Reason for not repossessing the vehicle?</b></label>
+                    <select class="form-control" formControlName="ReasonForNotRepossessing">
+                      <option selected>Select</option>
+                      <option>Customer Paid regular EMI</option>
+                      <option>Total OD along with ODC amount is less than Rs.50000</option>
+                      <option>Vehicle is not traceable</option>
+                      <option>Vehicle is in police custody</option>
+                      <option>Party is politically well connected</option>
+                      <option>There is no HP endorsement on the vehicle</option>
+                      <option>Vehicle is under legal dispute</option>
+                      <option>Party is strong locally</option>
+                      <option>Vehicle is with repo agent</option>
+                      <option>Vehicle is parked in garage and we need to pay repair amount</option>
+                      <option>Vehicle is with the dealer and we have to pay dealer dues</option>
+                      <option>Vehicle is with the RTO</option>
+                      <option>Vehicle is with forest Department</option>
+                      <option>Vehicle is plying at interior area, where no repo agent is working</option>
+                      <option>Local PS is not cooperating asking valid court order for repossession</option>
+                      <option>Vehicle is always with crowded passengers</option>
+                      <option>Vehicle is plying under load of perishable goods</option>
+                      <option>Vehicle condition is not good if repo and sell recovery will be less than settlement
+                        amount</option>
+                      <option>Vehicle is plying inside the mines and not coming out</option>
+                      <option>Vehicle is plying with fake number or no RC is there</option>
+                    </select>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                    <label for="InputNamePerMetCust"><b>Name of the person who has met the customer from TMFL
+                        side</b></label>
+                    <input type="text" formControlName="PersonMetCustFromTMF" class="form-control"
+                      id="InputNamePerMetCust" placeholder="Name of the person who has met the customer from TMFL side">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputDesignation"><b>Designation</b></label>
+                    <input type="text" formControlName="Designation" class="form-control" id="InputDesignation"
+                      placeholder="Designation">
+                  </div>
+                  <div class="form-group">
+                    <label><b>Working for(Employee of)</b></label>
+                    <select class="form-control" formControlName="EmployeeOf">
+                      <option selected>Select</option>
+                      <option>TMF</option>
+                      <option>E-Nxt</option>
+                      <option>Intellect</option>
+                      <option>Dealer</option>
+                      <option>Others</option>
+                      <option>NA</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="InputMobileNumber"><b>Mobile Number</b></label>
+                    <input type="number" formControlName="MobileNumber" class="form-control" id="InputMobileNumber"
+                      placeholder="Mobile Number">
+                  </div>
+
+
+                </div>
+
+                <!-- <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div> -->
+              </div>
+            </div>
+            <br>
+          </div>
+          <!-- contract display card end -->
+        </form>
+
+        <br>
+
+        <div class="example-button-row">
+          <button mat-raised-button routerLink="/RequestForm" color="accent"> Submit</button>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

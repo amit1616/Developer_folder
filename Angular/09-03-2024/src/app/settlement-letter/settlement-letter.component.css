@@ -1,0 +1,139 @@
+.card-header{
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+ background-color: #6d34aa;
+ align-items: stretch;
+ box-shadow: 0 1px 1px rgb(10 10 10 / 10%);
+ color: whitesmoke;
+ height: 60px;
+}
+.container-head {
+  width: 99%;
+  padding-left: 0.5%;
+  padding-top: 1px;
+}
+
+.card {
+  color: #4a4a4a;
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  height: 570px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.card-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  align-items: stretch;
+  box-shadow: 0 1px 1px rgb(10 10 10 / 10%);
+  display: flex;
+  background-color: #6d34aa;
+}
+
+.card-header-title {
+  align-items: center;
+  color: #a6e90c;
+  display: flex;
+  flex-grow: 1;
+  font-weight: 700;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.text{
+  color: #fff;
+}
+
+
+
+mat-form-field + mat-form-field {
+  margin-left: 8px;
+  }
+
+  .example-button-row{
+    display: flex;
+    justify-content: center;
+  }
+
+  .center{
+    display: flex;
+    justify-content: center;
+  }
+
+
+
+
+
+
+
+
+
+.login-container {
+  background-color: #6d34aa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  top: 10%;
+  left: 42%;
+  position: relative;
+  
+
+  
+}
+
+.login-container h2 {
+  text-align: center;
+  color: #fff;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #fff;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group input[type="date"] {
+  /* Adjust styles for date picker input */
+  padding: 8px;
+}
+
+.form-group button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form-group button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,26 @@
+.card-header{
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+ background-color: #6d34aa;
+ align-items: stretch;
+ box-shadow: 0 1px 1px rgb(10 10 10 / 10%);
+ color: whitesmoke;
+ height: 60px;
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.example-button-row{
+  display: flex;
+  justify-content: center;
+}
+
+.hover-class:hover {
+  background-color: #fd7e14;
+}

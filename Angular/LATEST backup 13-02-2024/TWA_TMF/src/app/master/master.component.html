@@ -1,0 +1,49 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-header d-flex p-0">
+      <h2 class="card-title p-3 text">Master</h2>
+    </div>
+    <div class="card-body">
+
+
+      <div class="login-container">
+        <h2>Master Page</h2>
+        <form class="login-form" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
+          <div class="form-group">
+            <label for="contractnumber">Finance Product:</label>
+            <input type="text" name="financeproduct" maxlength="10" ngModel placeholder="Contract Number"
+              #financeproduct="ngModel" required financeproduct />
+
+          </div>
+
+          <!-- <p class="invalid-input"><span *ngIf="contractnumber.invalid && contractnumber.touched">Please enter valid
+                    Contract
+                    Number </span>
+            </p> -->
+          <div class="form-group">
+            <label for="date">Validity:</label>
+            <input type="text" id="validity" name="validity" ngModel #validity="ngModel" placeholder="Validity" required
+              validity>
+          </div>
+
+          <div class="btn">
+
+            <div class="form-group ">
+              <button [disabled]="userPost.invalid" type="submit">Submit</button>
+            </div>
+
+
+            <div class="form-group btn2">
+              <button [disabled]="userPost.invalid" type="submit">Cancel</button>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+  <br>

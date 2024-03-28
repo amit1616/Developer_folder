@@ -1,0 +1,1170 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-header d-flex p-0">
+      <h3 class="card-title p-3">Request Form</h3>
+    </div>
+    <div class="card-body">
+      <div class="tab-content">
+
+        <div class="col-md-12">
+          <div class="card shadow">
+            <div class="card-body">
+
+              <mat-form-field class="left">
+                <mat-label>Common Customer ID</mat-label>
+                <input matInput placeholder="Enter Common Customer ID" value="">
+              </mat-form-field>
+              <mat-form-field class="right">
+                <mat-label>Customer Name</mat-label>
+                <input matInput placeholder="Enter Customer Name" value="">
+              </mat-form-field>
+
+
+              <div>
+                <button class="mat-button btn" *ngFor="let msg of message; let i = index" id="{{i}}"
+                  (click)="selectTd(i)" [class.selected]="i === selectedTdIndex">
+                  {{ msg }}
+                </button>
+              </div>
+
+              <table class="table table-hover table-bordered" style="border:1px solid #BDB6B7; cursor: pointer;">
+                <tr *ngFor="let msg of message; let i = index" id="{{i}}">
+                  <td (click)="openDialog()">{{msg}}</td>
+                </tr>
+              </table>
+              <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+
+
+
+              <h5 style="color: red;">Please click on the contract number to view details.</h5>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <hr>
+        <div class="col-md-12" *ngFor="let msg of message;let i = index" id="{{i}}">
+          <ng-container *ngIf="msg==selectedData">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Contract No:{{msg}} Customer ID</h3>
+              </div>
+
+              <div class="card-body" style="display: block;">
+
+                <mat-tab-group mat-align-tabs="start" [(selectedIndex)]="activeTab"
+                  (selectedTabChange)="onTabChange($event)"> <!--[(selectedIndex)]="activeTab"-->
+                  <mat-tab label="Basic Details">
+                    <br>
+
+
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <h4 class="card-title">Vehicle Details</h4>
+                          <form [formGroup]="detailForm">
+                            <mat-form-field>
+                              <mat-label>Model</mat-label>
+                              <input matInput formControlName="model" placeholder="Enter Model" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>MFG Year</mat-label>
+                              <input matInput formControlName="mfg_year" placeholder="Enter Manufacturing Year" readonly
+                                [value]="mfgYearDate">
+                            </mat-form-field>
+
+
+                            <mat-form-field>
+                              <mat-label>RC Number</mat-label>
+                              <input matInput formControlName="rc_Number" placeholder="Enter RC Number" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Remedial Status</mat-label>
+                              <input matInput formControlName="remedial_Status" placeholder="Enter Remedial Status"
+                                readonly>
+                            </mat-form-field>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <h4 class="card-title">Contract Details</h4>
+                          <p class="card-text">
+                          <form [formGroup]="contractForm">
+                            <mat-form-field>
+                              <mat-label>Region</mat-label>
+                              <input matInput placeholder="Enter Region" formControlName="region" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>State</mat-label>
+                              <input matInput placeholder="Enter State" formControlName="state" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Branch</mat-label>
+                              <input matInput placeholder="Enter Branch" formControlName="branch" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Zone</mat-label>
+                              <input matInput placeholder="Enter Zone" formControlName="zone" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Contract Start Date</mat-label>
+                              <input matInput [matDatepicker]="pickerStart" (focus)="pickerStart.open()" readonly
+                                formControlName="contract_START_DATE" [disabled]="true">
+                            </mat-form-field>
+                            <mat-datepicker #pickerStart [disabled]="true"></mat-datepicker>
+
+                            <mat-form-field>
+                              <mat-label>Contract End Date</mat-label>
+                              <input matInput [matDatepicker]="pickerEnd" (focus)="pickerEnd.open()" readonly
+                                formControlName="contract_End_Date" [disabled]="true">
+                            </mat-form-field>
+                            <mat-datepicker #pickerEnd [disabled]="true"></mat-datepicker>
+
+                            <mat-form-field>
+                              <mat-label>Fin_prod</mat-label>
+                              <input matInput placeholder="Enter Fin_prod" formControlName="FinProd" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Distribution Channel</mat-label>
+                              <input matInput placeholder="Enter Distribution Channel"
+                                formControlName="distribution_Channel" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Body Contract</mat-label>
+                              <input matInput placeholder="Enter Body Contract" formControlName="body_Contract"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Top up Contract</mat-label>
+                              <input matInput placeholder="Enter Top up Contract" formControlName="top_up_Contract"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Schema Code</mat-label>
+                              <input matInput placeholder="Enter Schema Code" formControlName="scheme_Code" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Tech W/Off</mat-label>
+                              <input matInput placeholder="Enter Tech W/Off" formControlName="tech_W_off" readonly>
+                            </mat-form-field>
+
+                          </form>
+
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <h4 class="card-title">Analytics</h4>
+                          <p class="card-text">
+
+                          <form [formGroup]="analyticsForm">
+                            <mat-form-field>
+                              <mat-label>Seasoning</mat-label>
+                              <input matInput placeholder="Enter Seasoning" formControlName="seasoning" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>DPD</mat-label>
+                              <input matInput placeholder="Enter DPD" formControlName="bp_DPD" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>DPD Bucket</mat-label>
+                              <input matInput placeholder="Enter DPD Bucket" formControlName="dpd_Bucket" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Restructured/Non-Restructured</mat-label>
+                              <input matInput placeholder="Enter Restructured/Non-Restructured"
+                                formControlName="restructured_non_restructured" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Finance Amount</mat-label>
+                              <input matInput placeholder="Enter Finance Amount" formControlName="finance_Amount"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>TMC/NON-TMC</mat-label>
+                              <input matInput placeholder="Enter TMC/NON-TMC" formControlName="tmc_flag" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Request Raising Counter</mat-label>
+                              <input matInput placeholder="Enter Request Raising Counter"
+                                formControlName="request_Raising_Counter" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Delstring- 6M</mat-label>
+                              <input matInput placeholder="Enter Delstring- 6M" formControlName="delstring" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Average Sales Price</mat-label>
+                              <input matInput placeholder="Enter Average Sales Price"
+                                formControlName="average_Sales_Price" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Provision Amount</mat-label>
+                              <input matInput placeholder="Enter Provision Amount" formControlName="provision_Amount"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Pool Number</mat-label>
+                              <input matInput placeholder="Enter Pool Number" formControlName="pool_NUMBER" readonly>
+                            </mat-form-field>
+
+                          </form>
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </mat-tab>
+                  <mat-tab label="PDD">
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <br>
+                          <!-- feedback.component.html -->
+
+                          <form [formGroup]="pddForm">
+                            <mat-form-field>
+                              <mat-label>Credit Life</mat-label>
+                              <input matInput placeholder="Enter Credit Life" formControlName="creditLife" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Insurance Provision</mat-label>
+                              <input matInput placeholder="Enter Insurance Provision"
+                                formControlName="insurance_Provision" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Faulty Rc</mat-label>
+                              <input matInput placeholder="Enter Faulty Rc" formControlName="faulty_Rc" readonly>
+                            </mat-form-field>
+                          </form>
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+                  <mat-tab label="Partner">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <br>
+                                <div class="table-responsive">
+                                  <table id="docDownList" class="table table-hover table-bordered" style="border:1px solid #BDB6B7; cursor: pointer;">
+                                    <thead class="thead-dark" style="text-align: center;">
+                                        <tr>
+                                            <th>Guarantor / Co-Borrower</th>
+                                            <th>Contract no</th>
+                                            <th>Status</th>
+                                            <th>OD Amount</th>
+                                            <th>DPD</th>
+                                            <th>Customer Track</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="vertical-align: revert;">
+                                        <ng-container *ngIf="partnerData && partnerData.length > 0; else noData">
+                                            <tr *ngFor="let partner of partnerData">
+                                                <td>{{ partner.PARTNER_TYPE }}</td>
+                                                <td>{{ partner.CONTRACT_NUMBER }}</td>
+                                                <td>{{ partner.PARTNER_CONTRACT_STATUS }}</td>
+                                                <td style="text-align: right;">{{ partner.PARTNER_CONTRACT_OUTSTANDING }}</td>
+                                                <td>{{ partner.PARTNER_CONTRACT_DPD }}</td>
+                                                <td>{{ partner.CUSTOMER_TRACK }}</td>
+                                            </tr>
+                                        </ng-container>
+                                        <ng-template #noData>
+                                            <tr>
+                                                <td colspan="6" style="text-align: center;">No data available</td>
+                                            </tr>
+                                        </ng-template>
+                                    </tbody>
+                                </table>
+                                
+                                  
+                                    <!-- <table id="docDownList" class="table table-hover table-bordered" style="border:1px solid #BDB6B7; cursor: pointer;">
+                                        <thead class="thead-dark" style="text-align: center;">
+                                            <tr>
+                                                <th>Guarantor / Co-Borrower</th>
+                                                <th>Contract no</th>
+                                                <th>Status</th>
+                                                <th>OD Amount</th>
+                                                <th>DPD</th>
+                                                <th>Customer Track</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="vertical-align: revert;">
+                                            <tr *ngFor="let partner of partnerData">
+                                                <td>{{ partner.Guarantor }}</td>
+                                                <td>{{ partner.CONTRACT_NUMBER }}</td>
+                                                <td>{{ partner.PARTNER_CONTRACT_STATUS }}</td>
+                                                <td style="text-align: right;">{{ partner.OD_AMOUNT }}</td>
+                                                <td>{{ partner.PARTNER_CONTRACT_DPD }}</td>
+                                                <td>{{ partner.CUSTOMER_TRACK }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                
+
+                  <mat-tab label="Feedback">
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <br>
+                          <form [formGroup]="requestForm">
+                            <mat-form-field>
+                              <mat-label>Vehicle Reg. No</mat-label>
+                              <input matInput formControlName="VehicleRegNo" placeholder="Enter Vehicle Reg No"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Vehicle Model</mat-label>
+                              <input matInput formControlName="VehicleModel" placeholder="Enter Vehicle Model" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Proposed Settlement Date</mat-label>
+                              <input matInput formControlName="ProposedDate"
+                                placeholder="Enter Proposed Settlement Date" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Who is setteling the contract</mat-label>
+                              <input matInput formControlName="SettleingContract"
+                                placeholder="Enter Who is setteling the contract" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Name of the person who visited office on behalf of the customer</mat-label>
+                              <input matInput formControlName="nameVisitedCust"
+                                placeholder="Enter Name of the person who visited office on behalf of the customer"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Telephone/Mobile Number</mat-label>
+                              <input matInput formControlName="MobileNumber" placeholder="Enter Telephone/Mobile Number"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Vehicle Condition</mat-label>
+                              <input matInput formControlName="VehicleCondition" placeholder="Enter Vehicle Condition"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Has anyone met customer personally?</mat-label>
+                              <input matInput formControlName="MetCustomer"
+                                placeholder="Enter Has anyone met customer personally?" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Has anyone met guarantor personally?</mat-label>
+                              <input matInput formControlName="MetGuarantor"
+                                placeholder="Enter Has anyone met guarantor personally?" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Is the vehicle physically available?</mat-label>
+                              <input matInput formControlName="VehicleAvailable"
+                                placeholder="Enter Is the vehicle physically available?" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Reason for not repossessing the vehicle?</mat-label>
+                              <input matInput formControlName="ReasonForNotRepossessing"
+                                placeholder="Enter Reason for not repossessing the vehicle?" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Name of the person who has met the customer from TMFL side</mat-label>
+                              <input matInput formControlName="PersonMetCustFromTMF"
+                                placeholder="Enter Name of the person who has met the customer from TMFL side" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Designation</mat-label>
+                              <input matInput formControlName="Designation" placeholder="Enter Designation" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Working for(Employee of)</mat-label>
+                              <input matInput formControlName="EmployeeOf" placeholder="Enter Working for(Employee of)"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Mobile Number</mat-label>
+                              <input matInput formControlName="MobileNumber" placeholder="Enter Mobile Number" readonly>
+                            </mat-form-field>
+
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+
+
+                  <mat-tab label="Legal">
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="col-lg-12">
+                            <div class="card">
+                              <div class="card-body">
+                                <h4 class="card-title">Laxmi</h4>
+                                <!-- contract-details.component.html -->
+                                <div class="table-responsive">
+                                  <table id="docDownList" class="table table-hover table-bordered"
+                                    style="border:1px solid #BDB6B7; cursor: pointer;">
+                                    <thead class="thead-dark">
+                                      <tr>
+                                        <th>Contract No</th>
+                                        <th>Nature</th>
+                                        <th>Action</th>
+                                        <th>Legal Action</th>
+                                        <th>Stage</th>
+                                        <th>Month</th>
+                                        <th>Presentation Date</th>
+                                        <th>Instrument Value</th>
+                                        <th>Instrument Status</th>
+                                        <th>Instrument Status Date</th>
+                                        <th>Complaint Type</th>
+                                        <th>Case No</th>
+                                        <th>Remarks</th>
+                                        <th>RCM Remark</th>
+                                        <!-- Add more table headers as needed -->
+                                      </tr>
+                                    </thead>
+                                    <tbody style="vertical-align: revert;">
+                                      <tr *ngFor="let detail of lakshmiDetails">
+                                        <td>{{ detail.contract_NO }}</td>
+                                        <td>{{ detail.nature }}</td>
+                                        <td>{{ detail.action }}</td>
+                                        <td>{{ detail.legal_ACTION }}</td>
+                                        <td>{{ detail.stage }}</td>
+                                        <td>{{ detail.month }}</td>
+                                        <td>{{ detail.presentation_DATE | date: 'yyyy-MM-dd' }}</td>
+                                        <td>{{ detail.instrument_VALUE }}</td>
+                                        <td>{{ detail.instrument_STATUS }}</td>
+                                        <td>{{ detail.instrument_STATUS_DATE }}</td>
+                                        <td>{{ detail.complaint_TYPE }}</td>
+                                        <td>{{ detail.case_NO }}</td>
+                                        <td>{{ detail.remarks }}</td>
+                                        <td>{{ detail.rcmremark }}</td>
+                                        <!-- Add more table cells as needed -->
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="col-lg-12">
+                            <div class="card">
+                              <div class="card-body">
+                                <h4 class="card-title">Nyay Laxmi</h4>
+                                <!-- contract-details.component.html -->
+                                <div class="table-responsive">
+                                  <table id="docDownList" class="table table-hover table-bordered"
+                                    style="border:1px solid #BDB6B7; cursor: pointer;">
+                                    <thead class="thead-dark">
+                                      <tr>
+                                        <th>Litigation ID</th>
+                                        <th>Contract No</th>
+                                        <th>Customer Id</th>
+                                        <th>Customer Name</th>
+                                        <th>By Against Company</th>
+                                        <th>Category</th>
+                                        <th>LegalCaseType</th>
+                                        <th>Date Of Filing</th>
+                                        <th>Amount</th>
+                                        <th>LegalIssues</th>
+                                        <th>ThirdPartyName If filed By Third Party</th>
+                                        <th>PoliceStation</th>
+                                        <th>LastHearingDate</th>
+                                        <th>NextHearingDate</th>
+                                        <th>NextStage</th>
+                                        <th>FinalResult</th>
+                                        <th>Remarks</th>
+                                        <!-- Add more table headers as needed -->
+                                      </tr>
+                                    </thead>
+                                    <tbody style="vertical-align: revert;">
+                                      <tr *ngFor="let detail of nyaylakshmiDetails">
+                                        <td>{{ detail.litigation_ID }}</td>
+                                        <td>{{ detail.contract_NO }}</td>
+                                        <td>{{ detail.customer_ID }}</td>
+                                        <td>{{ detail.customer_NAME }}</td>
+                                        <td>{{ detail.by_AGAINST_COMPANY }}</td>
+                                        <td>{{ detail.category }}</td>
+                                        <td>{{ detail.legalcasetype }}</td>
+                                        <td>{{ detail.date_OF_FILING | date: 'yyyy-MM-dd' }}</td>
+                                        <td>{{ detail.amount }}</td>
+                                        <td>{{ detail.legalissues }}</td>
+                                        <td>{{ detail.thirdpartyname_IF_FILED_BY_THIRD_PARTY }}</td>
+                                        <td>{{ detail.policestation }}</td>
+                                        <td>{{ detail.lasthearingdate | date: 'yyyy-MM-dd' }}</td>
+                                        <td>{{ detail.nexthearingdate | date: 'yyyy-MM-dd' }}</td>
+                                        <td>{{ detail.nextstage }}</td>
+                                        <td>{{ detail.finalresult }}</td>
+                                        <td>{{ detail.remarks }}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+
+                  <mat-tab label="Terminal Dues">
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <h2 class="card-title">Terminal Dues</h2>
+
+                          <div class="table-responsive">
+                            <table id="docDownList" class="table table-hover table-bordered"
+                              style="border:1px solid #BDB6B7; cursor: pointer;">
+                              <thead class="thead-dark" style="text-align: center;">
+                                <tr>
+                                  <th>Name of Component</th>
+                                  <th>Dues Amount</th>
+                                  <th>Received Amount</th>
+                                  <th>Net Amount</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let item of terminationDuesDetails; let i = index">
+                                  <td>
+                                    <input type="text" class="form-control" [(ngModel)]="item.name_OF_COMPONENT"
+                                      readonly>
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control amount-field"
+                                      [(ngModel)]="item.amount_OF_COMPONENT_DUES" readonly>
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control amount-field"
+                                      [(ngModel)]="item.amount_OF_COMPONENT_RECEIVABLE" readonly>
+                                  </td>
+                                  <td>
+                                    <input type="text" class="form-control amount-field"
+                                      [(ngModel)]="item.amount_OF_COMPONENT_NET" readonly>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                          </div>
+
+                          <ng-template #noData>
+                            <div class="text-center">
+                              No data available.
+                            </div>
+                          </ng-template>
+
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+
+
+
+                  <mat-tab label="Request History">
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <table id="docDownList" class="table table-hover table-bordered"
+                            style="border:1px solid #BDB6B7;">
+                            <thead class="thead-dark">
+                            <tbody>
+                              <tr *ngFor="let msg of message; let i = index" (click)="selectedData = msg">
+                                <td>
+                                  <button>{{ msg }}</button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+
+                  <mat-tab label="Group Exposure">
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <br>
+                          <form [formGroup]="groupexposureForm">
+                            <mat-form-field>
+                              <mat-label>Contract No</mat-label>
+                              <input matInput formControlName="CONTRACT_NUMBER" placeholder="Enter Contract No" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Status</mat-label>
+                              <input matInput formControlName="STATUS" placeholder="Enter Status" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Customer</mat-label>
+                              <input matInput formControlName="CUSTOMER_NUMBER" placeholder="Enter Customer" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Customer Name</mat-label>
+                              <input matInput formControlName="CUSTOMER_NAME" placeholder="Enter Customer Name" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Future Principal</mat-label>
+                              <input matInput formControlName="FUTURE_PRINCIPAL" placeholder="Enter Future Principal"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Contract Value</mat-label>
+                              <input matInput formControlName="CONTRACT_VALUE_GROUP_EXPO" placeholder="Enter Contract Value"
+                                readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Future EMI</mat-label>
+                              <input matInput formControlName="FUTURE_EMI" placeholder="Enter Future EMI" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>OD No.</mat-label>
+                              <input matInput formControlName="OD_NO" placeholder="Enter OD No." readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>OD Amount</mat-label>
+                              <input matInput formControlName="OD_AMOUNT" placeholder="Enter OD Amount" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>ODC Due</mat-label>
+                              <input matInput formControlName="ODC_DUE" placeholder="Enter ODC Due" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Exposure</mat-label>
+                              <input matInput formControlName="EXPOSURE" placeholder="Enter Exposure" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Track Status</mat-label>
+                              <input matInput formControlName="TRACK_STATUS" placeholder="Enter Track Status" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Cont Termination/W/o date</mat-label>
+                              <input matInput formControlName="CONT_TERM_WOFF_DT"
+                                placeholder="Enter Cont Termination/W/o date" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Current month Maturity Amount</mat-label>
+                              <input matInput formControlName="CURRENT_MTH_MATURITY_AMT"
+                                placeholder="Enter Current month Maturity Amount" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>ODC %</mat-label>
+                              <input matInput formControlName="ODC_PERCENTAGE" placeholder="Enter ODC %" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>ODC Collected</mat-label>
+                              <input matInput formControlName="ODC_COLLECTED" placeholder="Enter ODC Collected" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>AD last 12 M</mat-label>
+                              <input matInput formControlName="AD_LAST_12_MTH" placeholder="Enter AD last 12 M" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>PD last 12 M</mat-label>
+                              <input matInput formControlName="PD_LAST_12_MTH" placeholder="Enter PD last 12 M" readonly>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <mat-label>Track Status last 12 M</mat-label>
+                              <input matInput formControlName="TRACK_STATUS_LAST_12_MTH"
+                                placeholder="Enter Track Status last 12 M" readonly>
+                            </mat-form-field>
+
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+
+                </mat-tab-group>
+
+              </div>
+
+            </div>
+            <hr>
+          </ng-container>
+        </div>
+
+        <hr>
+
+        <div class="col-md-12">
+          <div class="card card-primary" *ngIf="COLLATERAL_DETAILS && COLLATERAL_DETAILS.length > 0">
+            <div class="card-header">
+              <h3 class="card-title">Collateral Security</h3>
+            </div>
+
+            <div class="card-body" style="display: block;">
+              <table id="docDownList" class="table table-hover table-bordered"
+                style="border:1px solid #BDB6B7; cursor: pointer;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Party Code</th>
+                    <th scope="col">Vendor/Customer Name</th>
+                    <th scope="col">Initiator Branch</th>
+                    <th scope="col">Collateral Type</th>
+                    <th scope="col">Cont. No/Fan No.</th>
+                    <th scope="col">Purpose</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Expiry Date</th>
+                    <th scope="col">Collateral Stored at</th>
+                    <th scope="col">Additional Details</th>
+                    <th scope="col">Owner Name</th>
+                    <th scope="col">Creation Date</th>
+                    <th scope="col">Request Number</th>
+                    <th scope="col">BP Number</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngIf="COLLATERAL_DETAILS && COLLATERAL_DETAILS.length > 0">
+                    <tr *ngFor="let detail of COLLATERAL_DETAILS">
+                      <td>{{ detail.party_CODE }}</td>
+                      <td>{{ detail.vendor_NAME }}</td>
+                      <td>{{ detail.initiator_BRANCH }}</td>
+                      <td>{{ detail.collateral_TYPE }}</td>
+                      <td>{{ detail.fan_NUMBER }}</td>
+                      <td>{{ detail.purpose_NAME }}</td>
+                      <td>{{ detail.amount }}</td>
+                      <td>{{ detail.expiry_DATE }}</td>
+                      <td>{{ detail.stored_AT_TYPE }}</td>
+                      <td>{{ detail.additional_DETAILS }}</td>
+                      <td>{{ detail.owner_NAME }}</td>
+                      <td>{{ detail.created_AT }}</td>
+                      <td>{{ detail.request_NUMBER }}</td>
+                      <td>{{ detail.bp_NUMBER }}</td>
+                    </tr>
+                  </ng-container>
+
+                  <ng-container *ngIf="!COLLATERAL_DETAILS || COLLATERAL_DETAILS.length === 0">
+                    <tr>
+                      <td colspan="14">No data available</td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+
+              <div class="input-group col-12">
+                <div class="input-group">
+                  <span class="input-group-text">Approval's Remarks for Collateral Details <p
+                      style="color: red; font-weight:900;">*</p></span>
+                  <textarea class="form-control" aria-label="Approval's Remarks for Collateral Details"></textarea>
+                </div>
+              </div>
+
+              <div class="row disclaimer-top">
+                <div class="col-md-2">
+                  <h3 class="disclaimer-heading">Disclaimer : </h3>
+                </div>
+                <div>
+                  <div class="form-group">
+                    <input type="checkbox" id="disclaimerCheckbox" [(ngModel)]="disclaimerChecked"
+                      name="disclaimerCheckbox">
+                    <label for="disclaimerCheckbox" class="checkbox-label">I have viewed all the collateral details for
+                      this contract/bp {{ OtherLoanType }} along with Collateral remarks.</label>
+                  </div>
+                </div>
+                <div *ngIf="disclaimerChecked">
+                  <div class="form-group">
+                    <label for="collateralRemarks">Collateral Remarks <span style="color: red">*</span></label>
+                    <textarea class="form-control" id="collateralRemarks" [(ngModel)]="collateralRemarks"
+                      name="collateralRemarks" rows="2" required></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <hr>
+
+        <div class="col-md-12">
+          <div class="card card-primary bg-body-tertiary rounded">
+            <div class="card-header">
+              <h3 class="card-title">Attachments</h3>
+            </div>
+            <br>
+            <div class="card-body bg--tertiary rounded" style="display: block;width:60%">
+              <br>
+
+              <table id="docDownList" class="table table-hover table-bordered"
+                style="border:1px solid #BDB6B7; cursor: pointer;">
+
+                <!-- First row -->
+                <!-- <ng-container *ngFor="let data of divData; let i = index"> -->
+                <ng-container *ngFor="let formGroup of formGroups; let i = index">
+                  <tr>
+                    <div class="input-group">
+                      <mat-label style="margin-left: 5px;">Type</mat-label>
+                      <select class="form-select" id="inputGroupSelect01" style="margin-left:5px">
+                        <option selected>Type...</option>
+                        <option value="1">Death Certificate</option>
+                        <option value="2">Legal</option>
+                        <option value="2">Vehicle Images</option>
+                        <option value="2">Garage/Yard Invoice</option>
+                        <option value="2">Stay Order</option>
+                        <option value="2">Section 17</option>
+                        <option value="2">Section 138</option>
+                        <option value="2">Police Complaint</option>
+                        <option value="2">ROP</option>
+                        <option value="3">Others</option>
+                      </select>
+
+                      <form [formGroup]="formGroup">
+                        <input class="form-control" type="file" id="suppdoc" name="suppdoc" formControlName="suppdoc"
+                          (change)="validateFile($event, i)">
+                        <div *ngIf="formGroup.get('suppdoc')?.errors?.['invalidFormat']" class="error-message">
+                          Invalid file format. Please select a JPEG, JPG, or PNG file.
+                        </div>
+                      </form>
+
+                      <!-- Add button after first row -->
+                      <button mat-raised-button color="primary" *ngIf="i === 0" class="hover-class addbutton"
+                        (click)="addDiv()">+</button>
+
+                      <!-- Delete button after second row -->
+                      <button mat-icon-button class="delete-button" *ngIf="i > 0" type="button"
+                        (click)="deleteTypeField(i)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </div>
+                  </tr>
+                </ng-container>
+
+                <!-- Upload button -->
+
+                <button mat-raised-button color="primary" class="hover-class typeuploadbutton" id="Save"
+                  (click)="onTypeSubmit()">
+                  Upload
+                </button>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+
+        <hr>
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Calculation</h3>
+            </div>
+
+            <div class="card-body" style="display: block;">
+
+              <table id="docDownList" class="table table-hover table-bordered"
+                style="border:1px solid #BDB6B7; cursor: pointer;">
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Proposed Recovery Amount</span>
+                  <input type="number" class="form-control" placeholder="Proposed Recovery Amount" id="amountInput">
+                  <div class="input-group-append">
+                    <button mat-raised-button color="primary" class="hover-class" (click)="populateFields()">Go</button>
+                  </div>
+                </div>
+
+
+                <tr class="thead-dark">
+                  <th scope="col">Description</th>
+                  <th scope="col">Dues</th>
+                  <th scope="col">Received</th>
+                  <th scope="col">Net</th>
+                  <th scope="col">Waiver Amount</th>
+                  <th scope="col">Waiver Percentage(%)</th>
+                </tr>
+              </table>
+
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Reason for seeking Waivers<p
+                    style="color: red; font-weight:900;">*</p></label>
+                <select class="form-select" id="inputGroupSelect01">
+                  <option selected>Choose...</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Sub Category <p
+                    style="color: red; font-weight:900;">*</p></label>
+                <select class="form-select" id="inputGroupSelect01">
+                  <option selected>Choose...</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+
+        <hr>
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Sanctioning Authority</h3>
+            </div>
+
+            <div class="input-wrapper">
+              <form [formGroup]="form" (submit)="submit(form.value)">
+
+                <fieldset>
+                  <table class="contact-table">
+                    <thead>
+                      <tr>
+                        <th class="center">Contract Number</th>
+                        <th class="center">User ID</th>
+                        <th class="center">User Name</th>
+                        <th class="center">Designation</th>
+                        <th class="center">Current Appropriate Designation</th>
+                        <th class="center">Attachments</th>
+                        <th class="center">Action</th>
+                      </tr>
+                    </thead>
+
+                    <tbody formArrayName="contacts">
+
+                      <tr *ngFor="let contact of contactsFormArray.controls; let i = index" [formGroupName]="i">
+                        <td class="center">
+                          <div>
+                            <input type="number" class="form-control" id="cnumber" name="contractNumber"
+                              placeholder="contractNumber" maxlength="10" formControlName="contractNumber">
+                          </div>
+                        </td>
+                        <td class="center">
+                          <div>
+                            <input type="userID" class="form-control" id="userId" name="userId" placeholder="userId"
+                              formControlName="userId">
+                          </div>
+                        </td>
+                        <td class="center">
+                          <div>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="userName"
+                              formControlName="Name">
+                          </div>
+                        </td>
+                        <td class="center">
+                          <div class="input-group1">
+                            <select class="form-select" id="designation">
+                              <option selected>Choose...</option>
+                              <option value="1">Branch Credit Manager</option>
+                              <option value="2">Area Credit Manager</option>
+                              <option value="3">Zonal Credit Manager</option>
+                              <option value="4">Zonal Credit Head</option>
+                              <option value="5">State Head Credit</option>
+                              <option value="6">Zonal Credit Committee</option>
+                              <option value="7">Regional Credit Head</option>
+                              <option value="8">Regional Credit Committee</option>
+                              <option value="9">Regional Business Head - L9 </option>
+                              <option value="10">Head Credit</option>
+                              <option value="11">Head Credit + Head Risk</option>
+                              <option value="12">Chief Credit Officer</option>
+                              <option value="13">Managing Director</option>
+                              <option value="14">Board</option>
+                            </select>
+                          </div>
+                        </td>
+
+                        <td class="center">
+                          <div class="input-group1">
+                            <select class="form-select" id="currentAppropriateDesignation">
+                              <option selected>Choose...</option>
+                              <option value="1">Territory Collection Manager</option>
+                              <option value="2">Zonal Collection Head</option>
+                              <option value="3">Regional Collection Head</option>
+                              <option value="4">National Collection Head</option>
+                              <option value="5">Chief Collections Officer</option>
+                              <option value="6">Chief Operating Officer - Regions and Collections</option>
+                              <option value="7">Managing Director</option>
+                              <option value="8">Board</option>
+                            </select>
+                          </div>
+                        </td>
+
+                        <td class="center">
+                          <div class="attachments">
+                            <input class="form-control" type="file" id="suppdoc" name="suppdoc"
+                              formControlName="suppdoc" (change)="validatesanFile($event, i)">
+                            <div *ngIf="form?.get('contacts')?.get(i.toString())?.get('suppdoc')?.dirty && form?.get('contacts')?.get(i.toString())?.get('suppdoc')?.errors?.['invalidFormat']" class="error-message">
+                              Invalid file format. Please select a JPEG, JPG, or PNG file.
+                            </div>               
+                          </div>
+                        </td>
+                        <td>
+                          <!-- <button mat-raised-button color="primary" class="hover-class sanaddbtn" type="button"
+                          (click)="addContactField()">+</button> -->
+
+                          <!-- Add button -->
+                          <!-- Add button (visible for the last row only) -->
+
+                          <!-- Add button in the first row -->
+                          <!-- <button mat-raised-button color="warn" class="hover-class" type="button"
+                            (click)="deleteContactField(i)" *ngIf="contactsFormArray.length > 1">Delete</button> -->
+                          <button mat-raised-button color="primary" class="hover-class sanaddbtn" type="button"
+                            (click)="addContactField()" *ngIf="i === 0">+</button>
+                            <button mat-icon-button class="delete-button" *ngIf="i > 0" type="button"
+                              (click)="deleteContactField(i)">
+                              <mat-icon>delete</mat-icon>
+                            </button>
+                          
+                        </td>
+                        <!-- <button mat-icon-button color="warn" class="hover-class" type="button"
+                            (click)="deleteContactField(i)">
+                            <mat-icon>delete</mat-icon>
+                          </button> -->
+
+                      </tr>
+                    </tbody>
+
+                  </table>
+                </fieldset>
+              </form>
+
+              <div class="input-group col-12" style="margin-top: 25px;">
+                <div class="input-group">
+                  <span class="input-group-text">Remarks <p style="color: red; font-weight:900;">*</p></span>
+                  <textarea class="form-control" aria-label="Efforts taken for Recovery"></textarea>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="col-md-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Approval Matrix</h3>
+            </div>
+
+            <div class="card-body" style="display: block;">
+              <div class="approvalMatrix">
+                <form [formGroup]="ApprovalMatrix">
+                  <div class="input-group col-12">
+                    <div class="col-4">
+                      <label class="input-group-text">First level Approver</label>
+                    </div>
+                    <div class="col-4">
+                      <label class="input-group-text">Full name <span
+                          style="color: red; font-weight: 900;">*</span></label>
+                      <input formControlName="fullName" type="text" class="form-control" placeholder="Full Name">
+                    </div>
+                    <div class="col-4">
+                      <label class="input-group-text">Role <span style="color: red; font-weight: 900;">*</span></label>
+                      <input formControlName="role" type="text" class="form-control" placeholder="Role of the Approver">
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-text">Efforts taken for Recovery <span
+                        style="color: red; font-weight: 900;">*</span></span>
+                    <textarea formControlName="efforts" class="form-control"
+                      placeholder="Efforts taken for Recovery"></textarea>
+                  </div>
+                </form>
+
+                <br>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="example-button-row">
+          <button mat-raised-button color="primary" (click)="navigateToApprovalScreen()" class="hover-class">Initiate
+            Request</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <script>
+  function ShowDetails(divNum) {
+    console.log("inside the JS function");
+    document.getElementById(divNum).style.display = "block";
+  }
+</script> -->

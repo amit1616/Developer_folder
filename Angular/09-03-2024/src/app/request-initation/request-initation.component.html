@@ -1,0 +1,140 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-header d-flex p-0">
+      <h3 class="card-title p-3">Raise Request</h3>
+    </div>
+    <div class="card-body">
+      <div class="tab-content">
+
+        <div class="center">
+          <form [formGroup]="RequestForm" class="form-container">
+            <mat-form-field>
+              <mat-label>Waiver/Non-Waiver</mat-label>
+              <mat-select formControlName="Wavier_flag">
+                <mat-option value="Waiver">Waiver</mat-option>
+                <mat-option value="Non-Waiver">Non-Waiver</mat-option>
+              </mat-select>
+              <mat-hint align="end">
+                <span>Here's the dropdown arrow ^</span>
+              </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field hintLabel="Max 10 characters">
+              <mat-label>Contract Number</mat-label>
+              <input formControlName="Contract_no" matInput #input maxlength="10" placeholder="Enter Contact Number">
+              <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field hintLabel="Max 10 characters">
+              <mat-label>BP Number</mat-label>
+              <input formControlName="Bp_no" matInput #input1 maxlength="10" placeholder="Enter BP Number">
+              <mat-hint align="end">{{input1.value.length}}/10</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field hintLabel="Max 10 characters">
+              <mat-label>Group Code</mat-label>
+              <input formControlName="Group_code" matInput #input2 maxlength="10" placeholder="Enter Group Code">
+              <mat-hint align="end">{{input2.value.length}}/10</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Proposed Recover Date</mat-label>
+              <input formControlName="Pr_date" [min]="minDate" [max]="maxDate" matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            
+
+            <br>
+            <br>
+
+            <div class="example-button-row">
+              <button mat-raised-button color="primary" class="hover-class" (click)="RequestInit()">Submit</button>
+            </div>
+
+          </form>
+        </div>
+
+        <br>
+        <div id="RequestValue" class="RequestData" [hidden]="isShowDiv">
+          <hr>
+
+          <mat-form-field class="search">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+          </mat-form-field>
+
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ContractNo">
+              <th mat-header-cell *matHeaderCellDef><b>Contract Number</b></th>
+              <td mat-cell *matCellDef="let element">{{element.ContractNo}}</td>
+            </ng-container>
+            <ng-container matColumnDef="original_cust_name">
+              <th mat-header-cell *matHeaderCellDef><b>Customer Name</b></th>
+              <td mat-cell *matCellDef="let element">{{element.original_cust_name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="vehicle_model">
+              <th mat-header-cell *matHeaderCellDef><b>Vehicle Model</b></th>
+              <td mat-cell *matCellDef="let element">{{element.vehicle_model}}</td>
+            </ng-container>
+            <ng-container matColumnDef="vehicle_reg_no">
+              <th mat-header-cell *matHeaderCellDef><b>Registration Number</b></th>
+              <td mat-cell *matCellDef="let element">{{element.vehicle_reg_no}}</td>
+            </ng-container>
+            <ng-container matColumnDef="od_amt">
+              <th mat-header-cell *matHeaderCellDef><b>Overdue Amount</b></th>
+              <td mat-cell *matCellDef="let element">{{element.od_amt}}</td>
+            </ng-container>
+            <ng-container matColumnDef="od_num">
+              <th mat-header-cell *matHeaderCellDef><b>Overdue Number</b></th>
+              <td mat-cell *matCellDef="let element">{{element.od_num}}</td>
+            </ng-container>
+
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+          </table>
+
+          <br>
+          <div class="example-button-row">
+            <button mat-raised-button (click)="abc()" color="primary" class="hover-class"> Raise Request</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="spinner" [hidden]="isShowSpin">
+<div class="box-modal">
+  <div class="overlay"></div>
+  <div class="body-modal">
+    <div class="inner-body-modal">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</div>
+  </div>
+
+</div>
+
+<br>
+

@@ -1,0 +1,191 @@
+<div class="col-12">
+    <div class="card">
+        <div class="card-header d-flex p-0">
+            <h3 class="card-title p-3">Request History</h3>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+
+
+                <div class="col-md-12">
+                    <div class="card shadow">
+                        <div class="card-body">
+
+
+                            <div class="center">
+                                <form class="form-container">
+
+                                    <mat-form-field hintLabel="Max 10 characters">
+                                        <mat-label>Contract Number</mat-label>
+                                        <input matInput #input maxlength="10" placeholder="Enter Contact Number">
+                                        <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+                                    </mat-form-field>
+
+                                    <mat-form-field hintLabel="Max 10 characters">
+                                        <mat-label>BP Number</mat-label>
+                                        <input matInput #input1 maxlength="10" placeholder="Enter BP Number">
+                                        <mat-hint align="end">{{input1.value.length}}/10</mat-hint>
+                                    </mat-form-field>
+                                    <button mat-raised-button color="primary" class="hover-class"
+                                        style="margin-left: 20px;margin-bottom: 15px;" (click)="ShowHistory()">Submit</button>
+
+                                    <!-- <div class="example-button-row">
+                                        <button mat-raised-button color="primary" class="hover-class">Submit</button>
+                                    </div> -->
+
+                                </form>
+                            </div>
+                            <div class="ng-container" [hidden]="isShowDiv">
+                                <hr>
+                                <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                                    <thead style="background-color: #652aa5; color: whitesmoke;">
+                                        <tr>
+                                            <th>Request No.</th>
+                                            <th>Customer Name</th>
+                                            <th>Employee Name</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Action On</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr routerLink="/Reports">
+                                            <td>2865</td>
+                                            <td>Nikhil</td>
+                                            <td>Amitkumar Jaya Shetty</td>
+                                            <td>Initiator</td>
+                                            <td>Request for Waiver</td>
+                                            <td>01/09/2023</td>
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2865</td>
+                                            <td>Nikhil</td>
+                                            <td>Amitabh [Collection -Regional Manager]</td>
+                                            <td>Approver</td>
+                                            <td>No Action Taken</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2865</td>
+                                            <td>Nikhil</td>
+                                            <td>Rupali Guha Thakurta Guhathakurta [Business Planning - Regional Finance
+                                                Controller]</td>
+                                            <td>Approver</td>
+                                            <td>No Action Taken</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2865</td>
+                                            <td>Nikhil</td>
+                                            <td>Sanjay Goel [Regonal Business - Regional Business Head]</td>
+                                            <td>Approver</td>
+                                            <td>No Action Taken</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2865</td>
+                                            <td>Nikhil</td>
+                                            <td>Rohit Dhanraj Sarda [Credit - Chief Credit & Collection Officer]</td>
+                                            <td>Approver</td>
+                                            <td>No Action Taken</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2865</td>
+                                            <td>Nikhil</td>
+                                            <td>Vinu Nair [Regions & Collections - Chief Operating Officer - Regions &
+                                                Collections]</td>
+                                            <td>Approver</td>
+                                            <td>No Action Taken</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2865</td>
+                                            <td>Nikhil</td>
+                                            <td>AmitKumar Jaya Shetty</td>
+                                            <td>Initiator</td>
+                                            <td>Rejected - Approving Authority related query to Initiator</td>
+                                            <td>01/09/2023</td>
+                                        </tr>
+                                        <tr style="background-color: #b4b4b4;">
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2868</td>
+                                            <td>Aniket</td>
+                                            <td>AmitKumar Jaya Shetty</td>
+                                            <td>Initiator</td>
+                                            <td>Request for Waiver</td>
+                                            <td>01/09/2023</td>
+                                        </tr>
+
+                                        <tr routerLink="/Reports">
+                                            <td>2868</td>
+                                            <td>Nikhil</td>
+                                            <td>Amitabh [Collection -Regional Manager]</td>
+                                            <td>Approver</td>
+                                            <td>No Action Taken</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2868</td>
+                                            <td>Nikhil</td>
+                                            <td>Rupali Guha Thakurta Guhathakurta [Business Planning - Regional Finance
+                                                Controller]</td>
+                                            <td>Approver</td>
+                                            <td>No Action Taken</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2868</td>
+                                            <td>Nikhil</td>
+                                            <td>Sanjay Goel [Regonal Business - Regional Business Head]</td>
+                                            <td>Approver</td>
+                                            <td>No Action Taken</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2868</td>
+                                            <td>Nikhil</td>
+                                            <td>Rohit Dhanraj Sarda [Credit - Chief Credit & Collection Officer]</td>
+                                            <td>Approver</td>
+                                            <td>No Action Taken</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr routerLink="/Reports">
+                                            <td>2868</td>
+                                            <td>Nikhil</td>
+                                            <td>Vinu Nair [Regions & Collections - Chief Operating Officer - Regions &
+                                                Collections]</td>
+                                            <td>Approver</td>
+                                            <td>No Action Taken</td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr routerLink="/Reports">
+                                            <td>2868</td>
+                                            <td>Nikhil</td>
+                                            <td>AmitKumar Jaya Shetty</td>
+                                            <td>Initiator</td>
+                                            <td>Rejected - Approving Authority related query to Initiator</td>
+                                            <td>09/10/2023</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-header d-flex p-0">
+      <h3 class="card-title p-3">Upload</h3>
+    </div>
+    <div class="card-body">
+
+<p>Select the type of Upload</p>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="ASH" (click)="AHSUpload()"><p (click)="AHSUpload()">ASH</p></mat-radio-button>
+        <mat-radio-button value="ASP" (click)="ASPUpload()"><p (click)="ASPUpload()">ASP</p></mat-radio-button>
+        <mat-radio-button value="COE" (click)="COEUpload()"><p (click)="COEUpload()">COE</p></mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+
+    <div id="AHSUpload" class="AHSUpload" [hidden]="isShowAHSDIV">
+      <div class="card">
+        <h3 class="card-title p-3">AHSUpload</h3>
+        <div class="card-body">
+          <div class="mb-3">
+            <div class="input-group">
+              <!-- <form method="post" id="file_upload" action="upload"> -->
+                <input class="form-control" type="file" (change)="incomingfile($event)" id="suppdoc" name="suppdoc" accept=".xlsx">
+                <button class="btn btn-outline-primary" type="button" id="Save"
+                  style="z-index:0; color: whitesmoke; background-color: #58258e;" (click)="UploadAHS()">Upload</button>
+                <!-- </form> -->
+            </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <div id="ASPUpload" class="ASPUpload" [hidden]="isShowASPDIV">
+
+      <div class="card">
+        <h3 class="card-title p-3">ASPUpload</h3>
+        <div class="card-body">
+             <div class="mb-3">
+            <div class="input-group">
+              <!-- <form method="post" id="file_upload" action="upload"> -->
+                <input class="form-control" type="file" (change)="incomingfile($event)" id="suppdoc" name="suppdoc" accept=".xlsx">
+                <button class="btn btn-outline-primary" type="button" id="Save"
+                  style="z-index:0; color: whitesmoke; background-color: #58258e;" (click)="UploadASPnCOE()">Upload</button>
+                <!-- </form> -->
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div id="COEUpload" class="COEUpload" [hidden]="isShowCOEDIV">
+      <div class="card">
+        <h3 class="card-title p-3">COEUpload</h3>
+        <div class="card-body">
+          <div class="mb-3">
+            <div class="input-group">
+              <!-- <form method="post" id="file_upload" action="upload"> -->
+              <input class="form-control" type="file" (change)="incomingfile($event)" id="suppdoc" name="suppdoc" accept=".xlsx">
+              <button class="btn btn-outline-primary" type="button" id="Save"
+                style="z-index:0; color: whitesmoke; background-color: #58258e;" (click)="UploadASPnCOE()">Upload</button>
+              <!-- </form> -->
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- <div>
+      <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+      <button type="button" class="btn btn-info" (click)="Upload()" >Upload</button>
+</div> -->
+    </div>
+  </div>
+
+  <br>

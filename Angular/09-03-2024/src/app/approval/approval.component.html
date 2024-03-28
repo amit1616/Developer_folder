@@ -1,0 +1,416 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <div class="tab-content">
+        <div class="col-md-12">
+          <div class="card shadow">
+            <div class="card-body">
+              <div class="row">
+
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="requestId" class="required">Request ID</label>
+                    <input type="text" id="requestId" placeholder="Enter Request ID" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="initiatedBy" class="required">Initiated By</label>
+                    <input type="text" id="initiatedBy" placeholder="Enter Initiated Name" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="ProposedRecoveryDate" class="required">Proposed Recovery Date</label>
+                    <mat-form-field appearance="fill">
+                      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-md-1">
+                  <div class="form-group">
+                    <label for="portfolio" class="required">Portfolio</label>
+                    <input type="text" id="Portofolio" placeholder="Portofolio" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-1">
+                  <div class="form-group">
+                    <label for="maxdpd" class="required">Max DPD</label>
+                    <input type="text" id="MaxDPD" placeholder="Max DPD" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="livecontractcount" class="required">LiveContractCount</label>
+                    <input type="text" id="LiveContractCount" placeholder="Live Contract Count" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="opentwarequestcount" class="required">OpenTWARequestCount</label>
+                    <input type="text" id="OpenTWARequestCount" placeholder="Open TWA Request Count"
+                      class="form-control">
+                  </div>
+                </div>
+
+              </div>
+
+
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <hr>
+  <br>
+  <!-- Request Information -->
+
+  <div class="col-md-12">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Request Information</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Contract No</th>
+                <th>Hirer Name</th>
+                <th>Model</th>
+                <th>Vehicle Status</th>
+                <th>Seasoning</th>
+                <th>Contract Value</th>
+                <th>ODC</th>
+                <th>PMT</th>
+                <th>Expenses</th>
+                <th>Total Due</th>
+                <th>Proposed Recovery</th>
+                <th>Waiver</th>
+                <th>Provision Amt</th>
+                <th>Net Loss</th>
+                <th>Avg Sales Price</th>
+                <th>Tech W/O</th>
+                <th>Restructured / Non-Restructured</th>
+                <th>Final App Auth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of items">
+                <td>{{ item.contractNo }}</td>
+                <td>{{ item.hirerName }}</td>
+                <td>{{ item.model }}</td>
+                <td>{{ item.vehicleStatus }}</td>
+                <td>{{ item.seasoning }}</td>
+                <td>{{ item.contractValue }}</td>
+                <td>{{ item.odc }}</td>
+                <td>{{ item.pmt }}</td>
+                <td>{{ item.expenses }}</td>
+                <td>{{ item.totalDue }}</td>
+                <td>{{ item.proposedRecovery }}</td>
+                <td>{{ item.waiver }}</td>
+                <td>{{ item.provisionAmt }}</td>
+                <td>{{ item.netLoss }}</td>
+                <td>{{ item.avgSalesPrice }}</td>
+                <td>{{ item.techWO }}</td>
+                <td>{{ item.restructured }}</td>
+                <td>{{ item.finalAppAuth }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="input-group">
+                <label>Reason for seeking Waivers : </label>
+                <select class="form-select" id="reasons">
+                  <option selected>Choose...</option>
+                  <option value="reason1">Gurantor not traceble</option>
+                  <option value="reason2">Vehicle not possible to repo</option>
+                  <option value="reason3">Reason 3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="input-group">
+                <label style="font-weight:500">Sub Category : </label>
+                <select class="form-select" id="subcategory">
+                  <option selected>Choose...</option>
+                  <option value="subcat1">Subcategory 1</option>
+                  <option value="subcat2">Subcategory 2</option>
+                  <option value="subcat3">Subcategory 3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <span class="input-group-text">Efforts taken for Recovery <span
+              style="color: red; font-weight: 900;">*</span></span>
+          <textarea formControlName="efforts" class="form-control"
+            placeholder="Efforts taken for Recovery"></textarea>
+        </div>
+
+    </div>
+  </div>
+  <hr>
+  <br>
+
+  <!-- Attachments -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Attachments</h3>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>File No</th>
+                <th>File Name</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Uploaded By</th>
+                <th>Download</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Example.pdf</td>
+                <td>PDF</td>
+                <td>2024-02-23</td>
+                <td>User123</td>
+                <td><a href="#">Download</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="card-body bg--tertiary rounded" style="display: block;width:60%">
+            <br>
+
+            <table id="docDownList" class="table table-hover table-bordered"
+              style="border:1px solid #BDB6B7; cursor: pointer;">
+
+
+              <ng-container *ngFor="let formGroup of formGroups; let i = index">
+                <tr>
+                  <div class="input-group">
+                    <mat-label style="margin-left: 5px;">Type</mat-label>
+                    <select class="form-select" id="inputGroupSelect01" style="margin-left:5px">
+                      <option selected>Type...</option>
+                      <option value="1">Death Certificate</option>
+                      <option value="2">Legal</option>
+                      <option value="2">Vehicle Images</option>
+                      <option value="2">Garage/Yard Invoice</option>
+                      <option value="2">Stay Order</option>
+                      <option value="2">Section 17</option>
+                      <option value="2">Section 138</option>
+                      <option value="2">Police Complaint</option>
+                      <option value="2">ROP</option>
+                      <option value="3">Others</option>
+                    </select>
+
+                    <form [formGroup]="formGroup">
+                      <input class="form-control" type="file" id="suppdoc" name="suppdoc" formControlName="suppdoc"
+                        (change)="validateFile($event, i)">
+                      <div *ngIf="formGroup.get('suppdoc')?.errors?.['invalidFormat']" class="error-message">
+                        Invalid file format. Please select a JPEG, JPG, or PNG file.
+                      </div>
+                    </form>
+
+
+                    <!-- Add button after first row -->
+                    <button mat-raised-button color="primary" *ngIf="i === 0" class="hover-class addbutton"
+                      (click)="addDiv()">+</button>
+
+                    <!-- Delete button after second row -->
+                    <button mat-icon-button class="delete-button" *ngIf="i > 0" type="button"
+                      (click)="deleteTypeField(i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </tr>
+              </ng-container>
+
+
+              <button mat-raised-button color="primary" class="hover-class typeuploadbutton" id="Save"
+                (click)="onTypeSubmit()">
+                Upload
+              </button>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <br>
+  <!-- Calculation -->
+
+  <div class="col-md-12">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Calculation</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Dues Amount</th>
+                <th>Received Amount</th>
+                <th>Net Amount</th>
+                <th>Waiver Amount</th>
+                <th>Waiver Percentage</th>
+                <th>Approving Authority</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Add rows dynamically if data is coming from Angular -->
+              <tr>
+                <td>Description 1</td>
+                <td>$100</td>
+                <td>$80</td>
+                <td>$20</td>
+                <td>$10</td>
+                <td>10%</td>
+                <td>Authority 1</td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Sanctioning Authority -->
+
+   <div class="col-md-12">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Sanctioning Authority</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sanctioning Authority</th>
+          <th>Contract Number</th>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>Credit Designation</th>
+          <th>Equivalent Authority in Collection</th>
+          <th>Attachment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of tableData">
+          <td>{{ item.sanctioningAuthority }}</td>
+          <td>{{ item.contractNumber }}</td>
+          <td>{{ item.userID }}</td>
+          <td>{{ item.userName }}</td>
+          <td>{{ item.creditDesignation }}</td>
+          <td>{{ item.equivalentAuthority }}</td>
+          <td>{{ item.attachment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </div>
+  
+  
+<!-- Approvals -->
+
+<div class="col-md-12">
+  <div class="card card-primary">
+    <div class="card-header">
+      <h3 class="card-title">Approvals</h3>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr No.</th>
+          <th>Approver</th>
+          <th>Designation</th>
+          <th>Status</th>
+          <th>Remarks</th>
+          <th>Approval Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Amitabh</td>
+          <td>Collections Regional Manager</td>
+          <td>Approved</td>
+          <td>Okay</td>
+          <td>2/8/2024 19:50</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Rupali</td>
+          <td>Business Planning Regional Finance Controller</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Sanjay Goel</td>
+          <td>Regional Business Regional Business Head</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Rohit Sarda</td>
+          <td>Credit Chief Credit & Collections Officer</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </div>
+
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" (click)="submitbutton()" class="hover-class">
+      Submit</button>
+  </div>
+
+</div>

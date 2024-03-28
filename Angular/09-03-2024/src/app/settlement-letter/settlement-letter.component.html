@@ -1,0 +1,38 @@
+<div class="col-12">
+  <div class="card">
+      <div class="card-header d-flex p-0">
+          <h2 class="card-title p-3 text">Settlement Letter</h2>
+      </div>
+      <div class="card-body">
+
+
+        <div class="center">
+            <form class="form-container">
+  
+              <mat-form-field hintLabel="Max 10 characters">
+                <mat-label>Contract Number</mat-label>
+                <input formControlName="Contract_no" matInput #input maxlength="10" placeholder="Enter Contact Number">
+                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+              </mat-form-field>
+    
+              <mat-form-field>
+                <mat-label>Date of Contract</mat-label>
+                <input formControlName="Pr_date" matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              
+  
+              <br>
+              <br>
+  
+              <div class="example-button-row">
+                <button mat-raised-button color="primary" class="hover-class">Generate Letter</button>
+              </div>
+  
+            </form>
+          </div>
+
+      </div>
+  </div>
